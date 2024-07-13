@@ -2,7 +2,6 @@ from PyQt5 import QtWidgets, uic, QtGui, QtCore
 from WIDGET import logIMG
 import time
 c = [True, 0]
-btc2 = [True, True, True]
 class SolucionEscritorio:
     
     def __init__(self):
@@ -52,6 +51,8 @@ class SolucionEscritorio:
         
         #Funcion de los botones FRM Registro de Productos
         self.rprod.bt_cancelar_prod.clicked.connect(self.cierreRegProd)
+        self.rprod.bt_nuevo_prod.clicked.connect(self.aperturaNew)
+        self.rprod.bt_listar.clicked.connect(self.aperturaList)
         
         #AGREGRADO DE DATOS EN COMBO-BOX
         #PARA MENU
@@ -190,11 +191,13 @@ class SolucionEscritorio:
     def accionar2(self):
         if c[1] == 0:
             self.menu.close()
+            self.rprod.wd_reg_listar.hide()
+            self.rprod.wd_reg_produ.hide()
             self.rprod.show()
-        else:
-            if c[1] == 1:
-                self.menu.close()
-                self.log.show()#SOLO ES DE PRUEBA
+        #else:
+            #if c[1] == 1:
+                #self.menu.close()
+                
             #else:
                 #if c[1] == 2:
         
@@ -211,3 +214,12 @@ class SolucionEscritorio:
     def cierreRegProd(self):
         self.rprod.close()
         self.menu.show()
+        
+    def aperturaNew(self):
+        self.rprod.wd_reg_listar.hide()
+        self.rprod.wd_reg_produ.show()
+        
+    def aperturaList(self):
+        self.rprod.wd_reg_produ.hide()
+        self.rprod.wd_reg_listar.show()
+        
