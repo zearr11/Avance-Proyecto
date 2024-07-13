@@ -8,16 +8,21 @@ class SolucionEscritorio:
         
         #Cargado Principal de FRM
         self.app = QtWidgets.QApplication([])
-        self.menu = uic.loadUi("FRM_S/FRM_MEN_PRINCIPAL.ui")
-        self.log = uic.loadUi("FRM_S/FRM_LOGIN.ui")
-        self.reg = uic.loadUi("FRM_S/FRM_REG_USER.ui")
-        self.rprod = uic.loadUi("FRM_S/FRM_REG_PROD.ui")
+        self.menu = uic.loadUi("FRM_S/FRM_MEN_PRINCIPAL.ui")#FRM MENU
+        self.log = uic.loadUi("FRM_S/FRM_LOGIN.ui")#FRM LOGIN
+        self.reg = uic.loadUi("FRM_S/FRM_REG_USER.ui")#FRM REG USUARIO
+        self.rprod = uic.loadUi("FRM_S/FRM_REG_PROD.ui")#FRM REG PRODUCTO
+        self.rclient = uic.loadUi("FRM_S/FRM_REG_CLIENT.ui")#FRM REG CLIENTES
+        self.rprove = uic.loadUi("FRM_S/FRM_REG_PROVE.ui")#FRM REG PROVEDORES
+        #self.rventa = uic.loadUi("FRM_S/FRM_REG_VENTA.ui")#FRM REG VENTA
         
         #Asignacion de los titulos de las ventanas de los FRM
         self.log.setWindowTitle("Acceso Login")
         self.menu.setWindowTitle("Menu Principal")
         self.reg.setWindowTitle("Registro de Usuario")
         self.rprod.setWindowTitle("Registro de Productos")
+        self.rclient.setWindowTitle("Registro de Clientes")
+        self.rprove.setWindowTitle("Registro de Proveedores")
         
         #Interfaz de Splash
         ImgPix2 = QtGui.QPixmap("IMG/METROSPLASH.png")
@@ -42,7 +47,7 @@ class SolucionEscritorio:
         self.menu.bt_ingreso_ventas.clicked.connect(self.si_ventas)
         self.menu.bt_ingreso_compras.clicked.connect(self.si_compras)
         self.menu.bt_ingreso_almacen.clicked.connect(self.si_almacen)
-        #self.menu.bt_accion1.clicked.connect(self.accionar1)
+        self.menu.bt_accion1.clicked.connect(self.accionar1)
         self.menu.bt_accion2.clicked.connect(self.accionar2)
         #self.menu.bt_accion3.clicked.connect(self.accionar3)
         
@@ -53,6 +58,14 @@ class SolucionEscritorio:
         self.rprod.bt_cancelar_prod.clicked.connect(self.cierreRegProd)
         self.rprod.bt_nuevo_prod.clicked.connect(self.aperturaNew)
         self.rprod.bt_listar.clicked.connect(self.aperturaList)
+        
+        #Funcion de los botones FRM Registro de Clientes
+        self.rclient.bt_cancelar_cl.clicked.connect(self.cierreRegClient)
+        self.rclient.bt_nuevo_cl.clicked.connect(self.RegClientNuevo)
+        
+        #Funcion de los botones FRM Registro de Proveedores
+        self.rprove.bt_cancelar_prov.clicked.connect(self.cierreRegProvee)
+        self.rprove.bt_nuevo_prov.clicked.connect(self.RegProveeNuevo)
         
         #AGREGRADO DE DATOS EN COMBO-BOX
         #PARA MENU
@@ -186,14 +199,25 @@ class SolucionEscritorio:
             self.menu.bt_accion2.setText("Registro\nde Guias\nde Salida")
             self.menu.bt_accion3.hide()
             
-    #def accionar1(self):
-        
+    def accionar1(self):
+        if c[1] == 0: #CUANDO ES REG CLIENTES
+            self.menu.close()
+            self.rclient.window_1_cl.hide()
+            self.rclient.show()
+            
+        else: #CUANDO ES REG PROVEEDORES
+            if c[1] == 1:
+                self.menu.close()
+                self.rprove.window_1_pv.hide()
+                self.rprove.show()
+                
     def accionar2(self):
-        if c[1] == 0:
+        if c[1] == 0: #CUANDO ES REG PRODUCTO
             self.menu.close()
             self.rprod.wd_reg_listar.hide()
             self.rprod.wd_reg_produ.hide()
             self.rprod.show()
+            
         #else:
             #if c[1] == 1:
                 #self.menu.close()
@@ -223,3 +247,19 @@ class SolucionEscritorio:
         self.rprod.wd_reg_produ.hide()
         self.rprod.wd_reg_listar.show()
         
+        
+    #BOTONES REGISTRO DE CLIENTES
+    def cierreRegClient(self):
+        self.rclient.close()
+        self.menu.show()
+    
+    def RegClientNuevo(self):
+        self.rclient.window_1_cl.show()
+        
+    #BOTONES REGISTRO DE PROVEEDORES
+    def cierreRegProvee(self):
+        self.rprove.close()
+        self.menu.show()
+    
+    def RegProveeNuevo(self): 
+        self.rprove.window_1_pv.show()       
