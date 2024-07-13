@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="image">
+    <file>../IMG/203484.png</file>
+    <file>../IMG/fondo.png</file>
+    <file>../IMG/metrologo.png</file>
+  </qresource>
+</RCC>
