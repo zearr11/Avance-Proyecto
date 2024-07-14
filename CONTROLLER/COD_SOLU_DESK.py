@@ -14,7 +14,7 @@ class SolucionEscritorio:
         self.rprod = uic.loadUi("FRM_S/FRM_REG_PROD.ui")#FRM REG PRODUCTO
         self.rclient = uic.loadUi("FRM_S/FRM_REG_CLIENT.ui")#FRM REG CLIENTES
         self.rprove = uic.loadUi("FRM_S/FRM_REG_PROVE.ui")#FRM REG PROVEDORES
-        #self.rventa = uic.loadUi("FRM_S/FRM_REG_VENTA.ui")#FRM REG VENTA
+        self.rventa = uic.loadUi("FRM_S/FRM_REG_VENTA.ui")#FRM REG VENTA
         
         #Asignacion de los titulos de las ventanas de los FRM
         self.log.setWindowTitle("Acceso Login")
@@ -23,6 +23,7 @@ class SolucionEscritorio:
         self.rprod.setWindowTitle("Registro de Productos")
         self.rclient.setWindowTitle("Registro de Clientes")
         self.rprove.setWindowTitle("Registro de Proveedores")
+        self.rventa.setWindowTitle("Registro de Venta")
         
         #Interfaz de Splash
         ImgPix2 = QtGui.QPixmap("IMG/METROSPLASH.png")
@@ -49,7 +50,7 @@ class SolucionEscritorio:
         self.menu.bt_ingreso_almacen.clicked.connect(self.si_almacen)
         self.menu.bt_accion1.clicked.connect(self.accionar1)
         self.menu.bt_accion2.clicked.connect(self.accionar2)
-        #self.menu.bt_accion3.clicked.connect(self.accionar3)
+        self.menu.bt_accion3.clicked.connect(self.accionar3)
         
         #Funcion de los botones FRM Registro de Usuario
         self.reg.bt_cancelar.clicked.connect(self.cierreReg)
@@ -66,6 +67,10 @@ class SolucionEscritorio:
         #Funcion de los botones FRM Registro de Proveedores
         self.rprove.bt_cancelar_prov.clicked.connect(self.cierreRegProvee)
         self.rprove.bt_nuevo_prov.clicked.connect(self.RegProveeNuevo)
+        
+        #Funcion de los botones FRM Registro de Venta
+        self.rventa.bt_cancelar_vent.clicked.connect(self.cierreRegVenta)
+        self.rventa.bt_nuevo_vent.clicked.connect(self.RegVentaNuevo)
         
         #AGREGRADO DE DATOS EN COMBO-BOX
         #PARA MENU
@@ -225,8 +230,11 @@ class SolucionEscritorio:
             #else:
                 #if c[1] == 2:
         
-    #def accionar3(self):
-            
+    def accionar3(self):
+        if c[1] == 0: #CUANDO ES REG VENTA
+            self.menu.close()
+            self.rventa.window_1_venta.hide()
+            self.rventa.show()
             
     #BOTONES REGISTRO DE USUARIO
     def cierreReg(self):
@@ -256,6 +264,7 @@ class SolucionEscritorio:
     def RegClientNuevo(self):
         self.rclient.window_1_cl.show()
         
+        
     #BOTONES REGISTRO DE PROVEEDORES
     def cierreRegProvee(self):
         self.rprove.close()
@@ -263,3 +272,12 @@ class SolucionEscritorio:
     
     def RegProveeNuevo(self): 
         self.rprove.window_1_pv.show()       
+        
+        
+    #BOTONES REGISTRO DE VENTA
+    def cierreRegVenta(self):
+        self.rventa.close()
+        self.menu.show()
+        
+    def RegVentaNuevo(self):
+        self.rventa.window_1_venta.show()
