@@ -53,7 +53,7 @@ class SolucionEscritorio:
         self.menu.bt_accion3.clicked.connect(self.accionar3)
         
         #Funcion de los botones FRM Registro de Usuario
-        self.reg.bt_cancelar.clicked.connect(self.cierreReg)
+        self.reg.bt_cancelar_regUser.clicked.connect(self.cierreReg)
         
         #Funcion de los botones FRM Registro de Productos
         self.rprod.bt_cancelar_prod.clicked.connect(self.cierreRegProd)
