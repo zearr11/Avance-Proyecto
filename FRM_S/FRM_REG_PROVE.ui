@@ -576,7 +576,13 @@ Proveedor</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: white
+      <string notr="true">QComboBox {
+    color: black;
+}
+
+QGroupBox{
+color: white
+}
 </string>
      </property>
      <property name="title">

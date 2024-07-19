@@ -118,9 +118,37 @@ class SolucionEscritorio:
         self.rprod.cb_cat_prod.addItem("Deportes","6")
         
         self.rprod.cb_state_prod.addItem("Seleccione","0")
-        self.rprod.cb_state_prod.addItem("Disponible","0")
-        self.rprod.cb_state_prod.addItem("No Disponible","0")
-        self.rprod.cb_state_prod.addItem("No comercial","0")
+        self.rprod.cb_state_prod.addItem("Disponible","1")
+        self.rprod.cb_state_prod.addItem("No Disponible","2")
+        self.rprod.cb_state_prod.addItem("No comercial","3")
+        
+        #PARA REG CLIENTES
+        self.rclient.cb_tipoDNI_client.addItem("Seleccione","0")
+        self.rclient.cb_tipoDNI_client.addItem("DNI","1")
+        self.rclient.cb_tipoDNI_client.addItem("CE","2")
+        self.rclient.cb_tipoDNI_client.addItem("Pasaporte","3")
+        
+        #PARA REG VENTAS
+        self.rventa.cb_tipoDNI_vent.addItem("Seleccione","0")
+        self.rventa.cb_tipoDNI_vent.addItem("DNI","1")
+        self.rventa.cb_tipoDNI_vent.addItem("CE","2")
+        self.rventa.cb_tipoDNI_vent.addItem("Pasaporte","3")
+        
+        self.rventa.cb_medioP_vent.addItem("Seleccione","0")
+        self.rventa.cb_medioP_vent.addItem("Efectivo","1")
+        self.rventa.cb_medioP_vent.addItem("Débito","2")
+        self.rventa.cb_medioP_vent.addItem("Crédito","3")
+        self.rventa.cb_medioP_vent.addItem("Pago Online","4")
+        
+        #PARA REG PROVEE
+        self.rprove.cb_rubro_prov.addItem("Seleccione","0")
+        self.rprove.cb_rubro_prov.addItem("Alimenticio","1")
+        self.rprove.cb_rubro_prov.addItem("Tecnológico","2")
+        self.rprove.cb_rubro_prov.addItem("Textil","3")
+        self.rprove.cb_rubro_prov.addItem("Limpieza","4")
+        self.rprove.cb_rubro_prov.addItem("Cuidado Personal","5")
+        self.rprove.cb_rubro_prov.addItem("Papelería","6")
+        self.rprove.cb_rubro_prov.addItem("Juguetes","7")
         
         #Ocultado de Botones Iniciales
         self.menu.bt_accion1.hide()
@@ -204,14 +232,15 @@ class SolucionEscritorio:
             self.menu.bt_accion2.setText("Registro\nde Guias\nde Salida")
             self.menu.bt_accion3.hide()
             
+            
     def accionar1(self):
         if c[1] == 0: #CUANDO ES REG CLIENTES
             self.menu.close()
             self.rclient.window_1_cl.hide()
             self.rclient.show()
             
-        else: #CUANDO ES REG PROVEEDORES
-            if c[1] == 1:
+        else: 
+            if c[1] == 1: #CUANDO ES REG PROVEEDORES
                 self.menu.close()
                 self.rprove.window_1_pv.hide()
                 self.rprove.show()
